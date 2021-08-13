@@ -1,0 +1,44 @@
+<form #f="ngForm">
+<div class="form-group">
+<input required
+minlength="3"
+maxlength="15"
+ ngModel
+ id="firstName"
+ name="firstName"
+ #firstName="ngModel"
+ placeholder="First name"
+ class="form-control">
+<div class="alert alert-danger" *ngIf="firstName.touched && firstName.errors?.required"> first name is required!</div>
+<div class="alert alert-danger" *ngIf="firstName.errors?.minlength">first Name less than {{firstName.errors?.minlength?.requiredLength}} !</div>
+
+
+</div>
+  <div>
+    <input required
+    minlength="3"
+    maxlength="15"
+    ngModel
+    name="lastName"
+    #lastName="ngModel" placeholder="Last name" class="form-control">
+    </div>
+    <div>
+    <div class="alert alert-danger" *ngIf="lastName.touched && lastName.errors?.required"> last name is required!</div>
+    <div class="alert alert-danger" *ngIf="lastName.errors?.minlength">first Name less than {{lastName.errors?.minlength?.requiredLength}} !</div>
+    </div>
+  <input ngModel
+  required
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+  #email="ngModel"
+  name="email"
+  placeholder="email"
+  class="form-control">
+  <div class="alert alert-danger" *ngIf="email.touched && email.errors?.required"> email is required!</div>
+  <div class="alert alert-danger" *ngIf="email.errors?.pattern">wrong mail pattern !-!</div>
+
+
+<div>
+<input ngModel name="password" type="password" placeholder="password" class="form-control" >
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
